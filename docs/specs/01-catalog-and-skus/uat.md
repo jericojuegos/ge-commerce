@@ -22,7 +22,7 @@
 | **UAT-1.2** | `Req 1.2` | SKU saved with attributes (`size: L`) | Stores normalized JSON in `attributes_json` & enforces unique `sku_code` | `ProductAndSkuTest.php:L150-L154` PASS (`{"color":"Black","size":"L"}`) | `[x]` |
 | **UAT-1.3** | `Req 1.3` | Negative price/stock or duplicate `sku_code` | Rejects with `InvalidArgumentException` / HTTP `422`, zero DB writes | `ProductAndSkuTest.php:L169-L246` PASS (`saveCalls === 0` / unchanged) | `[x]` |
 | **UAT-2.2** | `Req 2.2` | Unauthenticated/unauthorized REST call | Denies with HTTP `401`/`403` before handler execution | `Invoke-WebRequest http://wp-ecommerce.test/?rest_route=/ge-commerce/v1/products` → `HTTP 403` | `[x]` |
-| **UAT-3.1** | `Req 3.1, 3.2` | Admin opens `Catalog & SKUs` & saves product | Lists products with `Intl.NumberFormat` prices; modal saves & refreshes | `CatalogPage.tsx` + `ProductModal.tsx` compiled cleanly via `npx tsc --noEmit && npm run build` | `[x]` |
+| **UAT-3.1** | `Req 3.1, 3.2` | Admin opens `Catalog & SKUs` & saves product | Lists products with `Intl.NumberFormat` prices; modal saves & refreshes | Live Browser QA (`http://wp-ecommerce.test/wp-admin/admin.php?page=ge-commerce`): created `Ninja Hoodie` ($49.99, 25 stock), verified reload persistence, Edit modal, Delete & reload (0 console/network errors, `NO_DEBUG_LOG`), [`./evidence/01-catalog-qa-final.png`](./evidence/01-catalog-qa-final.png) | `[x]` |
 
 ---
 
