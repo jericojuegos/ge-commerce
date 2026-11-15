@@ -1,6 +1,6 @@
 # ✅ Feature Tasks: Catalog, Variable Attributes & SKUs (`01-catalog-and-skus`)
 
-> **Phase / Wave:** `Phase 1 (Wave 1)` · **Branch / Owner:** `feat/01-catalog-and-skus` · **Status:** `[>]` Active  
+> **Phase / Wave:** `Phase 1 (Wave 1)` · **Branch / Owner:** `feat/01-catalog-and-skus` · **Status:** `[x]` Complete  
 > **Depends On:** `00-scaffold` (`[x]`) · **Touches:** `src/Modules/Catalog/, resources/js/admin/catalog/, tests/Unit/Modules/Catalog/`  
 > **Spec Links:** [`requirements.md`](./requirements.md) · [`design.md`](./design.md) · [`uat.md`](./uat.md) · [`design-reference/`](./design-reference/)
 
@@ -37,7 +37,7 @@
 - [x] **3.4** `[REVIEW]` **Frontend Build Checkpoint:** Run `npm run build` — must compile with zero TypeScript/webpack errors.
 
 ### 4. Final Verification & UAT
-- [ ] **4.1** `[REVIEW]` **Final Feature Checkpoint:** Run `/verify` (`vendor/bin/phpunit --testsuite Unit`, `npm run build`, `php -l`, WP-CLI & live Browser QA if reachable) → triggers `/ship`.
+- [x] **4.1** `[REVIEW]` **Final Feature Checkpoint:** Run `/verify` (`vendor/bin/phpunit --testsuite Unit`, `npm run build`, `php -l`, WP-CLI & live Browser QA if reachable) → triggers `/ship`.
 
 ---
 
@@ -66,3 +66,4 @@
 | 2026-11-15 | 1.1-1.4 | Implemented Catalog Domain & Application layer + `ProductAndSkuTest.php` (12/12 PHPUnit tests pass). |
 | 2026-11-15 | 2.1-2.3 | Implemented `WpdbProductRepository`, `CatalogRestController`, `CatalogServiceProvider`, and registered in `Plugin.php`. |
 | 2026-11-15 | 3.1-3.4 | Built React Admin Catalog UI (`CatalogPage`, `ProductModal`, `api.ts`, `types.ts`); `tsc --noEmit` & `npm run build` pass. |
+| 2026-11-15 | 4.1 | `/verify` passed (12/12 PHPUnit, `tsc --noEmit`, `npm run build`, WP-CLI DB round-trip, HTTP 403 auth check, Blind Diff `0 P0/P1`). Shipped via `/ship`. |
