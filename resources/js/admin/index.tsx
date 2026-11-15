@@ -2,6 +2,7 @@ import { createRoot, useState } from '@wordpress/element';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Card, CardBody, CardHeader, Button } from '@wordpress/components';
 import { CatalogPage } from './catalog/CatalogPage';
+import { CouponsAndTaxPage } from './coupons/CouponsAndTaxPage';
 
 const queryClient = new QueryClient();
 
@@ -13,7 +14,7 @@ export const formatCents = ( cents: number, currency = 'USD' ): string => {
 };
 
 export const AdminApp = (): JSX.Element => {
-	const [ activeTab, setActiveTab ] = useState< 'catalog' | 'orders' | 'settings' >( 'catalog' );
+	const [ activeTab, setActiveTab ] = useState< 'catalog' | 'coupons' | 'orders' | 'settings' >( 'catalog' );
 
 	return (
 		<div
@@ -52,6 +53,12 @@ export const AdminApp = (): JSX.Element => {
 						Catalog & SKUs
 					</Button>
 					<Button
+						variant={ activeTab === 'coupons' ? 'primary' : 'secondary' }
+						onClick={ () => setActiveTab( 'coupons' ) }
+					>
+						Coupons & Tax
+					</Button>
+					<Button
 						variant={ activeTab === 'orders' ? 'primary' : 'secondary' }
 						onClick={ () => setActiveTab( 'orders' ) }
 					>
@@ -69,6 +76,8 @@ export const AdminApp = (): JSX.Element => {
 			<div style={ { marginTop: '20px' } }>
 				{ activeTab === 'catalog' ? (
 					<CatalogPage />
+				) : activeTab === 'coupons' ? (
+					<CouponsAndTaxPage />
 				) : (
 					<Card style={ { border: '1px solid #E2E8F0', backgroundColor: '#FFFFFF' } }>
 						<CardHeader>

@@ -43,14 +43,14 @@
 - [x] **3.4** `[REVIEW]` **Backend Integration Checkpoint:** Run `php -l` on all touched PHP files and `vendor/bin/phpunit --testsuite Unit`.
 
 ### 4. React Admin Coupons, Tax Zones & Quote Simulator UI (`⚡ BATCH`: Admin SPA)
-- [ ] **4.1** `[FE]` Create `resources/js/admin/coupons/types.ts` and `resources/js/admin/coupons/api.ts` using `@wordpress/api-fetch`
+- [x] **4.1** `[FE]` Create `resources/js/admin/coupons/types.ts` and `resources/js/admin/coupons/api.ts` using `@wordpress/api-fetch`
   - _Requirements: 4.3_
-- [ ] **4.2** `[FE]` Build `resources/js/admin/coupons/CouponModal.tsx` and `resources/js/admin/coupons/CouponsAndTaxPage.tsx` using `@wordpress/components`, `@tanstack/react-query`, and `docs/foundation/design-system.md` tokens
+- [x] **4.2** `[FE]` Build `resources/js/admin/coupons/CouponModal.tsx` and `resources/js/admin/coupons/CouponsAndTaxPage.tsx` using `@wordpress/components`, `@tanstack/react-query`, and `docs/foundation/design-system.md` tokens
   - Include Coupons CRUD table, Tax & Shipping Zones editor, and Live Quote Simulator card.
   - _Requirements: 1.1, 1.3, 3.1, 3.2, 4.3_
-- [ ] **4.3** `[FE]` Wire `<CouponsAndTaxPage />` tab into `resources/js/admin/index.tsx`
+- [x] **4.3** `[FE]` Wire `<CouponsAndTaxPage />` tab into `resources/js/admin/index.tsx`
   - _Requirements: 4.3_
-- [ ] **4.4** `[REVIEW]` **Frontend Build Checkpoint:** Run `npx tsc --noEmit && npm run build` — must compile with zero TypeScript/webpack errors.
+- [x] **4.4** `[REVIEW]` **Frontend Build Checkpoint:** Run `npx tsc --noEmit && npm run build` — must compile with zero TypeScript/webpack errors.
 
 ### 5. Final Verification & UAT
 - [ ] **5.1** `[REVIEW]` **Final Feature Checkpoint:** Run `/verify` (`vendor/bin/phpunit --testsuite Unit`, `npx tsc --noEmit`, `npm run build`, `php -l`, WP-CLI & live Browser QA if reachable) → triggers `/ship`.
@@ -100,3 +100,4 @@
 | 2026-11-15 | 1.1-1.4 | Implemented Shared cross-module ports (`src/Shared/Contracts/`) & pure Coupon Domain/App + `CouponTest.php` (15/15 PHPUnit pass). |
 | 2026-11-15 | 2.1-2.4 | Implemented pure Cart, Tax & Shipping Domain/App + `CartAndTaxTest.php` (19/19 PHPUnit pass). |
 | 2026-11-15 | 3.1-3.4 | Implemented `CatalogLookupAdapter`, `WpdbCouponRepository`, `CouponRestController`, `WpdbCartSessionRepository`, `WpZoneConfigRepository`, `CartRestController`, providers, and `Plugin.php` wiring (`php -l` & 19/19 PHPUnit pass). |
+| 2026-11-15 | 4.1-4.4 | Built React Admin Coupons, Tax Zones & Quote Simulator UI (`resources/js/admin/coupons/` + `index.tsx`); `tsc --noEmit` & `npm run build` pass (`index.tsx.js` 61.9 KiB). |
