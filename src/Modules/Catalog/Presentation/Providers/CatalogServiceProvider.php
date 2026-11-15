@@ -16,8 +16,10 @@ use GeCommerce\Modules\Catalog\Application\Handlers\GetProductHandler;
 use GeCommerce\Modules\Catalog\Application\Handlers\ListProductsHandler;
 use GeCommerce\Modules\Catalog\Application\Handlers\SaveProductHandler;
 use GeCommerce\Modules\Catalog\Domain\Contracts\ProductRepositoryInterface;
+use GeCommerce\Modules\Catalog\Infrastructure\Adapters\CatalogLookupAdapter;
 use GeCommerce\Modules\Catalog\Infrastructure\Repositories\WpdbProductRepository;
 use GeCommerce\Modules\Catalog\Presentation\Rest\CatalogRestController;
+use GeCommerce\Shared\Contracts\CatalogLookupInterface;
 
 final class CatalogServiceProvider extends ServiceProvider {
 
@@ -25,6 +27,11 @@ final class CatalogServiceProvider extends ServiceProvider {
 		$container->singleton(
 			ProductRepositoryInterface::class,
 			static fn(): ProductRepositoryInterface => new WpdbProductRepository()
+		);
+
+		$container->singleton(
+			CatalogLookupInterface::class,
+			static fn(): CatalogLookupInterface => new CatalogLookupAdapter()
 		);
 
 		$container->singleton(

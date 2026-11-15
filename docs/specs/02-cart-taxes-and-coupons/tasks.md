@@ -32,15 +32,15 @@
 - [x] **2.4** `[REVIEW]` **Cart Core Checkpoint:** Run `php -l` and `vendor/bin/phpunit --testsuite Unit`.
 
 ### 3. Infrastructure Adapters, REST Controllers & ServiceProviders (`⚡ BATCH`: WP Adapters & DI)
-- [ ] **3.1** `[BE]` Implement `CatalogLookupAdapter` in `src/Modules/Catalog/Infrastructure/Adapters/CatalogLookupAdapter.php` and bind in `CatalogServiceProvider.php`
+- [x] **3.1** `[BE]` Implement `CatalogLookupAdapter` in `src/Modules/Catalog/Infrastructure/Adapters/CatalogLookupAdapter.php` and bind in `CatalogServiceProvider.php`
   - _Requirements: 2.1_
-- [ ] **3.2** `[BE]` Implement `WpdbCouponRepository`, `CouponRestController`, and `CouponServiceProvider` in `src/Modules/Coupon/`
+- [x] **3.2** `[BE]` Implement `WpdbCouponRepository`, `CouponRestController`, and `CouponServiceProvider` in `src/Modules/Coupon/`
   - Enforce `current_user_can('manage_options') || current_user_can('manage_ge_commerce')` on `/ge-commerce/v1/coupons*`.
   - _Requirements: 1.1, 4.1_
-- [ ] **3.3** `[BE]` Implement `WpdbCartSessionRepository`, `WpZoneConfigRepository`, `CartRestController`, and `CartServiceProvider` in `src/Modules/Cart/`, and register both providers in `src/Core/Plugin.php`
+- [x] **3.3** `[BE]` Implement `WpdbCartSessionRepository`, `WpZoneConfigRepository`, `CartRestController`, and `CartServiceProvider` in `src/Modules/Cart/`, and register both providers in `src/Core/Plugin.php`
   - Wire `wp_login` guest-to-user merge hook; enforce capability guard on `/tax-shipping-zones` & `/cart/quote-preview`, and `is_user_logged_in()` on `/cart/merge`.
   - _Requirements: 2.1, 2.2, 4.1, 4.2_
-- [ ] **3.4** `[REVIEW]` **Backend Integration Checkpoint:** Run `php -l` on all touched PHP files and `vendor/bin/phpunit --testsuite Unit`.
+- [x] **3.4** `[REVIEW]` **Backend Integration Checkpoint:** Run `php -l` on all touched PHP files and `vendor/bin/phpunit --testsuite Unit`.
 
 ### 4. React Admin Coupons, Tax Zones & Quote Simulator UI (`⚡ BATCH`: Admin SPA)
 - [ ] **4.1** `[FE]` Create `resources/js/admin/coupons/types.ts` and `resources/js/admin/coupons/api.ts` using `@wordpress/api-fetch`
@@ -99,3 +99,4 @@
 | 2026-11-15 | Init | Expanded `/spec 02-cart-taxes-and-coupons` (`requirements.md`, `design.md`, `tasks.md`, `uat.md`, `stitch-prompt.md`). |
 | 2026-11-15 | 1.1-1.4 | Implemented Shared cross-module ports (`src/Shared/Contracts/`) & pure Coupon Domain/App + `CouponTest.php` (15/15 PHPUnit pass). |
 | 2026-11-15 | 2.1-2.4 | Implemented pure Cart, Tax & Shipping Domain/App + `CartAndTaxTest.php` (19/19 PHPUnit pass). |
+| 2026-11-15 | 3.1-3.4 | Implemented `CatalogLookupAdapter`, `WpdbCouponRepository`, `CouponRestController`, `WpdbCartSessionRepository`, `WpZoneConfigRepository`, `CartRestController`, providers, and `Plugin.php` wiring (`php -l` & 19/19 PHPUnit pass). |

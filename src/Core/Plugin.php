@@ -9,7 +9,9 @@ declare(strict_types=1);
 
 namespace GeCommerce\Core;
 
+use GeCommerce\Modules\Cart\Presentation\Providers\CartServiceProvider;
 use GeCommerce\Modules\Catalog\Presentation\Providers\CatalogServiceProvider;
+use GeCommerce\Modules\Coupon\Presentation\Providers\CouponServiceProvider;
 use GeCommerce\WordPress\Database\Migrator;
 use GeCommerce\WordPress\Hooks\HookDispatcher;
 
@@ -157,5 +159,7 @@ final class Plugin {
 	 */
 	private function registerFeatureModules(): void {
 		$this->modules->add( CatalogServiceProvider::class );
+		$this->modules->add( CouponServiceProvider::class );
+		$this->modules->add( CartServiceProvider::class );
 	}
 }
