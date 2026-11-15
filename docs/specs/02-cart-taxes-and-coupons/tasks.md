@@ -21,15 +21,15 @@
 - [x] **1.4** `[REVIEW]` **Coupon Core Checkpoint:** Run `php -l` on all new PHP files and `vendor/bin/phpunit --testsuite Unit`.
 
 ### 2. Cart, Tax & Shipping Pure Domain/App + Unit Tests (`⚡ BATCH`: Pure PHP Cart & Calculators)
-- [ ] **2.1** `[BE]` Implement pure Cart Domain ValueObjects (`TaxZone`, `ShippingZone`, `CartTotals`), Entities (`CartItem`, `Cart`), Services (`TaxCalculator`, `ShippingCalculator`), and Ports (`CartSessionRepositoryInterface`, `ZoneConfigRepositoryInterface`) in `src/Modules/Cart/Domain/`
+- [x] **2.1** `[BE]` Implement pure Cart Domain ValueObjects (`TaxZone`, `ShippingZone`, `CartTotals`), Entities (`CartItem`, `Cart`), Services (`TaxCalculator`, `ShippingCalculator`), and Ports (`CartSessionRepositoryInterface`, `ZoneConfigRepositoryInterface`) in `src/Modules/Cart/Domain/`
   - Zero WordPress imports; pure integer basis-point tax & shipping math.
   - _Requirements: 2.1, 2.2, 2.3, 3.1, 3.2_
-- [ ] **2.2** `[BE]` Implement Cart Application DTOs (`CartItemInputDTO`, `QuotePreviewDTO`) and Handlers (`GetCartHandler`, `UpdateCartHandler`, `MergeGuestCartHandler`, `CalculateCartTotalsHandler`, `SaveZoneConfigHandler`) in `src/Modules/Cart/Application/`
+- [x] **2.2** `[BE]` Implement Cart Application DTOs (`CartItemInputDTO`, `QuotePreviewDTO`) and Handlers (`GetCartHandler`, `UpdateCartHandler`, `MergeGuestCartHandler`, `CalculateCartTotalsHandler`, `SaveZoneConfigHandler`) in `src/Modules/Cart/Application/`
   - _Requirements: 1.2, 1.3, 2.1, 2.2, 2.3, 3.1, 3.2_
-- [ ] **2.3** `[BE]` Write & run headless unit tests in `tests/Unit/Modules/Cart/CartAndTaxTest.php`
+- [x] **2.3** `[BE]` Write & run headless unit tests in `tests/Unit/Modules/Cart/CartAndTaxTest.php`
   - Cover cart item stock checks, guest-to-user merge (item sum capped at `available_qty`, coupon adoption, guest session cleanup), expired session handling, tax specificity (`country+region > country+* > *+*`), and shipping free-over threshold.
   - _Validates: Property 1, Property 2 (Requirements 1.2, 1.3, 2.1, 2.2, 2.3, 3.1, 3.2)_
-- [ ] **2.4** `[REVIEW]` **Cart Core Checkpoint:** Run `php -l` and `vendor/bin/phpunit --testsuite Unit`.
+- [x] **2.4** `[REVIEW]` **Cart Core Checkpoint:** Run `php -l` and `vendor/bin/phpunit --testsuite Unit`.
 
 ### 3. Infrastructure Adapters, REST Controllers & ServiceProviders (`⚡ BATCH`: WP Adapters & DI)
 - [ ] **3.1** `[BE]` Implement `CatalogLookupAdapter` in `src/Modules/Catalog/Infrastructure/Adapters/CatalogLookupAdapter.php` and bind in `CatalogServiceProvider.php`
@@ -98,3 +98,4 @@
 | :--- | :--- | :--- |
 | 2026-11-15 | Init | Expanded `/spec 02-cart-taxes-and-coupons` (`requirements.md`, `design.md`, `tasks.md`, `uat.md`, `stitch-prompt.md`). |
 | 2026-11-15 | 1.1-1.4 | Implemented Shared cross-module ports (`src/Shared/Contracts/`) & pure Coupon Domain/App + `CouponTest.php` (15/15 PHPUnit pass). |
+| 2026-11-15 | 2.1-2.4 | Implemented pure Cart, Tax & Shipping Domain/App + `CartAndTaxTest.php` (19/19 PHPUnit pass). |
