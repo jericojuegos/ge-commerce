@@ -20,12 +20,12 @@
 - [x] **1.4** `[REVIEW]` **Domain & Application Checkpoint:** Run `php -l` on all new PHP files and `vendor/bin/phpunit --testsuite Unit` — must pass with zero errors.
 
 ### 2. Infrastructure & Presentation REST Layer (`⚡ BATCH`: WP Adapter & DI)
-- [ ] **2.1** `[BE]` Implement `WpdbProductRepository` in `src/Modules/Catalog/Infrastructure/Repositories/WpdbProductRepository.php` using `$wpdb->prepare()` and SQL transactions on `wp_gec_products` and `wp_gec_skus`
+- [x] **2.1** `[BE]` Implement `WpdbProductRepository` in `src/Modules/Catalog/Infrastructure/Repositories/WpdbProductRepository.php` using `$wpdb->prepare()` and SQL transactions on `wp_gec_products` and `wp_gec_skus`
   - _Requirements: 1.1, 1.2, 2.1, 2.3_
-- [ ] **2.2** `[BE]` Implement `CatalogRestController` and `CatalogServiceProvider` in `src/Modules/Catalog/Presentation/` and register in `src/Core/Plugin.php`
+- [x] **2.2** `[BE]` Implement `CatalogRestController` and `CatalogServiceProvider` in `src/Modules/Catalog/Presentation/` and register in `src/Core/Plugin.php`
   - Enforce `current_user_can('manage_options') || current_user_can('manage_ge_commerce')` on all routes.
   - _Requirements: 1.3, 2.1, 2.2, 2.3_
-- [ ] **2.3** `[REVIEW]` **Backend Integration Checkpoint:** Run `php -l` on all touched PHP files and `vendor/bin/phpunit --testsuite Unit`.
+- [x] **2.3** `[REVIEW]` **Backend Integration Checkpoint:** Run `php -l` on all touched PHP files and `vendor/bin/phpunit --testsuite Unit`.
 
 ### 3. React Admin Catalog & SKU UI (`⚡ BATCH`: Admin SPA)
 - [ ] **3.1** `[FE]` Create `resources/js/admin/catalog/types.ts` and `resources/js/admin/catalog/api.ts` using `@wordpress/api-fetch`
@@ -64,3 +64,4 @@
 | :--- | :--- | :--- |
 | 2026-11-15 | Init | Expanded `/spec 01-catalog-and-skus` (`requirements.md`, `design.md`, `tasks.md`, `uat.md`, `stitch-prompt.md`). |
 | 2026-11-15 | 1.1-1.4 | Implemented Catalog Domain & Application layer + `ProductAndSkuTest.php` (12/12 PHPUnit tests pass). |
+| 2026-11-15 | 2.1-2.3 | Implemented `WpdbProductRepository`, `CatalogRestController`, `CatalogServiceProvider`, and registered in `Plugin.php`. |

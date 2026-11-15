@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 namespace GeCommerce\Core;
 
+use GeCommerce\Modules\Catalog\Presentation\Providers\CatalogServiceProvider;
 use GeCommerce\WordPress\Database\Migrator;
 use GeCommerce\WordPress\Hooks\HookDispatcher;
 
@@ -25,6 +26,7 @@ final class Plugin {
 		$this->modules   = new ModuleRegistry( $this->container );
 
 		$this->registerCoreServices();
+		$this->registerFeatureModules();
 	}
 
 	/**
@@ -147,5 +149,12 @@ final class Plugin {
 			HookDispatcher::class,
 			static fn(): HookDispatcher => new HookDispatcher()
 		);
+	}
+
+	/**
+	 * Register active feature module service providers.
+	 */
+	private function registerFeatureModules(): void {
+		$this->modules->add( CatalogServiceProvider::class );
 	}
 }
