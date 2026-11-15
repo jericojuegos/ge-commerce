@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main, master]
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify-php:
+    name: Verify PHP, Unit Tests & Build Installable ZIP
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          coverage: none
+      - name: PHP Syntax Lint (php -l)
+        run: find . -path ./vendor -prune -o -path ./node_modules -prune -o -name "*.php" -print0 | xargs -0 -n1 php -l
+      - name: Run PHPUnit
+        run: |
+          if [ -f "composer.json" ]; then composer install --no-interaction --prefer-dist; fi
+          if [ -f "vendor/bin/phpunit" ]; then vendor/bin/phpunit --testsuite Unit; fi
+      - name: Package Clean WordPress Installable ZIP
+        run: |
+          PLUGIN_SLUG="${GITHUB_REPOSITORY#*/}"
+          mkdir -p "/tmp/${PLUGIN_SLUG}"
+          rsync -a --exclude='.git*' --exclude='.agents' --exclude='docs' --exclude='tests' --exclude='node_modules' ./ "/tmp/${PLUGIN_SLUG}/"
+          (cd /tmp && zip -r "${GITHUB_WORKSPACE}/${PLUGIN_SLUG}.zip" "${PLUGIN_SLUG}")
+      - name: Upload Installable Plugin/Theme ZIP Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ github.event.repository.name }}-installable-zip
+          path: '*.zip'
+          retention-days: 14
