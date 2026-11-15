@@ -1,5 +1,9 @@
 import { createRoot, useState } from '@wordpress/element';
-import { Card, CardBody, CardHeader, Button, Notice } from '@wordpress/components';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { Card, CardBody, CardHeader, Button } from '@wordpress/components';
+import { CatalogPage } from './catalog/CatalogPage';
+
+const queryClient = new QueryClient();
 
 export const formatCents = ( cents: number, currency = 'USD' ): string => {
 	return new Intl.NumberFormat( 'en-US', {
@@ -62,26 +66,24 @@ export const AdminApp = (): JSX.Element => {
 				</div>
 			</header>
 
-			<Notice status="info" isDismissible={ false }>
-				GE Commerce Core initialized. Sample minor-unit formatting:{ ' ' }
-				<strong>{ formatCents( 2999, 'USD' ) }</strong> (2999 cents).
-			</Notice>
-
 			<div style={ { marginTop: '20px' } }>
-				<Card style={ { border: '1px solid #E2E8F0', backgroundColor: '#FFFFFF' } }>
-					<CardHeader>
-						<strong style={ { fontSize: '16px', color: '#0F172A' } }>
-							{ activeTab === 'catalog' && 'Product Catalog & SKUs' }
-							{ activeTab === 'orders' && 'Order Management & Stock Reservations' }
-							{ activeTab === 'settings' && 'Payment Gateways & Gemini AI Copilot' }
-						</strong>
-					</CardHeader>
-					<CardBody>
-						<p style={ { margin: 0, color: '#334155' } }>
-							Active view: <code>{ activeTab }</code>. Ready for Wave 1–4 feature modules.
-						</p>
-					</CardBody>
-				</Card>
+				{ activeTab === 'catalog' ? (
+					<CatalogPage />
+				) : (
+					<Card style={ { border: '1px solid #E2E8F0', backgroundColor: '#FFFFFF' } }>
+						<CardHeader>
+							<strong style={ { fontSize: '16px', color: '#0F172A' } }>
+								{ activeTab === 'orders' && 'Order Management & Stock Reservations' }
+								{ activeTab === 'settings' && 'Payment Gateways & Gemini AI Copilot' }
+							</strong>
+						</CardHeader>
+						<CardBody>
+							<p style={ { margin: 0, color: '#334155' } }>
+								Active view: <code>{ activeTab }</code>. Ready for Wave 3–4 feature modules.
+							</p>
+						</CardBody>
+					</Card>
+				) }
 			</div>
 		</div>
 	);
@@ -90,5 +92,9 @@ export const AdminApp = (): JSX.Element => {
 const mountNode = document.getElementById( 'ge-commerce-admin-root' );
 if ( mountNode ) {
 	const root = createRoot( mountNode );
-	root.render( <AdminApp /> );
+	root.render(
+		<QueryClientProvider client={ queryClient }>
+			<AdminApp />
+		</QueryClientProvider>
+	);
 }

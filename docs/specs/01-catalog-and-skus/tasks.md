@@ -28,13 +28,13 @@
 - [x] **2.3** `[REVIEW]` **Backend Integration Checkpoint:** Run `php -l` on all touched PHP files and `vendor/bin/phpunit --testsuite Unit`.
 
 ### 3. React Admin Catalog & SKU UI (`⚡ BATCH`: Admin SPA)
-- [ ] **3.1** `[FE]` Create `resources/js/admin/catalog/types.ts` and `resources/js/admin/catalog/api.ts` using `@wordpress/api-fetch`
+- [x] **3.1** `[FE]` Create `resources/js/admin/catalog/types.ts` and `resources/js/admin/catalog/api.ts` using `@wordpress/api-fetch`
   - _Requirements: 3.1, 3.2_
-- [ ] **3.2** `[FE]` Build `resources/js/admin/catalog/ProductModal.tsx` and `resources/js/admin/catalog/CatalogPage.tsx` using `@wordpress/components`, `@tanstack/react-query`, and `docs/foundation/design-system.md` tokens
+- [x] **3.2** `[FE]` Build `resources/js/admin/catalog/ProductModal.tsx` and `resources/js/admin/catalog/CatalogPage.tsx` using `@wordpress/components`, `@tanstack/react-query`, and `docs/foundation/design-system.md` tokens
   - _Requirements: 3.1, 3.2_
-- [ ] **3.3** `[FE]` Wire `QueryClientProvider` and `<CatalogPage />` into `resources/js/admin/index.tsx`
+- [x] **3.3** `[FE]` Wire `QueryClientProvider` and `<CatalogPage />` into `resources/js/admin/index.tsx`
   - _Requirements: 3.1_
-- [ ] **3.4** `[REVIEW]` **Frontend Build Checkpoint:** Run `npm run build` — must compile with zero TypeScript/webpack errors.
+- [x] **3.4** `[REVIEW]` **Frontend Build Checkpoint:** Run `npm run build` — must compile with zero TypeScript/webpack errors.
 
 ### 4. Final Verification & UAT
 - [ ] **4.1** `[REVIEW]` **Final Feature Checkpoint:** Run `/verify` (`vendor/bin/phpunit --testsuite Unit`, `npm run build`, `php -l`, WP-CLI & live Browser QA if reachable) → triggers `/ship`.
@@ -65,3 +65,4 @@
 | 2026-11-15 | Init | Expanded `/spec 01-catalog-and-skus` (`requirements.md`, `design.md`, `tasks.md`, `uat.md`, `stitch-prompt.md`). |
 | 2026-11-15 | 1.1-1.4 | Implemented Catalog Domain & Application layer + `ProductAndSkuTest.php` (12/12 PHPUnit tests pass). |
 | 2026-11-15 | 2.1-2.3 | Implemented `WpdbProductRepository`, `CatalogRestController`, `CatalogServiceProvider`, and registered in `Plugin.php`. |
+| 2026-11-15 | 3.1-3.4 | Built React Admin Catalog UI (`CatalogPage`, `ProductModal`, `api.ts`, `types.ts`); `tsc --noEmit` & `npm run build` pass. |

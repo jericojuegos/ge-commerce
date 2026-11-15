@@ -94,7 +94,8 @@ final class Plugin {
 			return;
 		}
 
-		$assetFile = GE_COMMERCE_PATH . 'build/index.asset.php';
+		$entryBase = file_exists( GE_COMMERCE_PATH . 'build/index.tsx.js' ) ? 'build/index.tsx' : 'build/index';
+		$assetFile = GE_COMMERCE_PATH . $entryBase . '.asset.php';
 		$asset     = file_exists( $assetFile )
 			? require $assetFile
 			: [
@@ -102,10 +103,10 @@ final class Plugin {
 				'version'      => defined( 'GE_COMMERCE_VERSION' ) ? GE_COMMERCE_VERSION : '0.1.0',
 			];
 
-		if ( file_exists( GE_COMMERCE_PATH . 'build/index.js' ) && function_exists( 'wp_enqueue_script' ) ) {
+		if ( file_exists( GE_COMMERCE_PATH . $entryBase . '.js' ) && function_exists( 'wp_enqueue_script' ) ) {
 			\wp_enqueue_script(
 				'ge-commerce-admin',
-				GE_COMMERCE_URL . 'build/index.js',
+				GE_COMMERCE_URL . $entryBase . '.js',
 				$asset['dependencies'],
 				(string) $asset['version'],
 				true
@@ -114,10 +115,10 @@ final class Plugin {
 
 		if ( function_exists( 'wp_enqueue_style' ) ) {
 			\wp_enqueue_style( 'wp-components' );
-			if ( file_exists( GE_COMMERCE_PATH . 'build/index.css' ) ) {
+			if ( file_exists( GE_COMMERCE_PATH . $entryBase . '.css' ) ) {
 				\wp_enqueue_style(
 					'ge-commerce-admin-style',
-					GE_COMMERCE_URL . 'build/index.css',
+					GE_COMMERCE_URL . $entryBase . '.css',
 					[ 'wp-components' ],
 					(string) $asset['version']
 				);
