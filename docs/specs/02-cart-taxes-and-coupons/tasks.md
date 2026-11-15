@@ -1,6 +1,6 @@
 # ✅ Feature Tasks: Session Cart, Coupons, Tax & Shipping Calculators (`02-cart-taxes-and-coupons`)
 
-> **Phase / Wave:** `Phase 1 (Wave 2)` · **Branch / Owner:** `feat/02-cart-taxes-and-coupons` · **Status:** `[>]` In Progress  
+> **Phase / Wave:** `Phase 1 (Wave 2)` · **Branch / Owner:** `feat/02-cart-taxes-and-coupons` · **Status:** `[x]` Complete  
 > **Depends On:** `01-catalog-and-skus` (`[x]`) · **Touches:** `src/Modules/Cart/, src/Modules/Coupon/, src/Shared/Contracts/, resources/js/admin/coupons/, tests/Unit/Modules/`  
 > **Spec Links:** [`requirements.md`](./requirements.md) · [`design.md`](./design.md) · [`uat.md`](./uat.md) · [`design-reference/`](./design-reference/)
 
@@ -53,7 +53,7 @@
 - [x] **4.4** `[REVIEW]` **Frontend Build Checkpoint:** Run `npx tsc --noEmit && npm run build` — must compile with zero TypeScript/webpack errors.
 
 ### 5. Final Verification & UAT
-- [ ] **5.1** `[REVIEW]` **Final Feature Checkpoint:** Run `/verify` (`vendor/bin/phpunit --testsuite Unit`, `npx tsc --noEmit`, `npm run build`, `php -l`, WP-CLI & live Browser QA if reachable) → triggers `/ship`.
+- [x] **5.1** `[REVIEW]` **Final Feature Checkpoint:** Run `/verify` (`vendor/bin/phpunit --testsuite Unit`, `npx tsc --noEmit`, `npm run build`, `php -l`, WP-CLI & live Browser QA if reachable) → triggers `/ship`.
 
 ---
 
@@ -82,8 +82,8 @@
 ---
 
 ## 🧪 Feature Verification & UAT Gate
-- [ ] **Level 1 (Automated Build & Unit Tests):** PHP syntax check, PHPUnit unit tests, TypeScript check, and `npm run build` pass with zero errors
-- [ ] **Level 2 & 3 (UAT & Visual Match):** `/verify` completed in [`uat.md`](./uat.md)
+- [x] **Level 1 (Automated Build & Unit Tests):** PHP syntax check, PHPUnit unit tests, TypeScript check, and `npm run build` pass with zero errors
+- [x] **Level 2 & 3 (UAT & Visual Match):** `/verify` completed in [`uat.md`](./uat.md)
 
 ---
 
@@ -101,3 +101,4 @@
 | 2026-11-15 | 2.1-2.4 | Implemented pure Cart, Tax & Shipping Domain/App + `CartAndTaxTest.php` (19/19 PHPUnit pass). |
 | 2026-11-15 | 3.1-3.4 | Implemented `CatalogLookupAdapter`, `WpdbCouponRepository`, `CouponRestController`, `WpdbCartSessionRepository`, `WpZoneConfigRepository`, `CartRestController`, providers, and `Plugin.php` wiring (`php -l` & 19/19 PHPUnit pass). |
 | 2026-11-15 | 4.1-4.4 | Built React Admin Coupons, Tax Zones & Quote Simulator UI (`resources/js/admin/coupons/` + `index.tsx`); `tsc --noEmit` & `npm run build` pass (`index.tsx.js` 61.9 KiB). |
+| 2026-11-15 | 5.1 | `/verify` passed (62 PHP files `php -l`, 19/19 PHPUnit, `tsc --noEmit` + `npm run build`, WP-CLI DB round-trips, REST 401/403 checks, Blind Diff `0 P0/P1`, Live Browser QA + Catalog smoke check). Shipped via `/ship`. |
